@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Waygum Inc.</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    
+    <script src="js/app.js"></script>
+	
+	<script>
+        function myfunction()
+        {
+            //alert("hello");
+			
+			$.getJSON('http://indiadevmisc.cloudapp.net:8080/username', function(data) {
+                var name;
+				console.log(data);
+                console.log(data["name"]);
+                //alert(data["name"]);
+				if(data["name"] == undefined)
+				name = "Guest";
+				else
+				name = data["name"];
+                document.getElementById('username').innerHTML = name;
+            });
+        }
+
+    </script>
+	
+</head>
+
+<body onload="myfunction();">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li style="background-color: #293846"> 
+					
+					<img class="waygum-logo mini-logo" src="/img/waygum_log.png" style="display:inline-block;width:68%; padding-left: 6px;"> 
+					<a  style="display:inline-block;" class="navbar-minimalize minimalize-styl-1 btn btn-primary hamburger" href="#" >
+						<i  class="fa fa-bars" style="padding-left: 25px"></i>
+					</a>
+                </li>
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs" id="username"> <strong class="font-bold"></strong>
+                             <!--</span> <span class="text-muted text-xs block">CEO<b class="caret"></b></span> </span>--> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="http://indiadevmisc.cloudapp.net:8080/sign-out">Logout</a></li>
+                            </ul>
+                    </div>
+                    <div class="logo-element">
+                        <img src="img/waygum_small.png" style="max-height: 40px; max-width: 42px" >
+                    </div>
+                </li>
+                <li class="nav-reporting active">
+                    <a onclick="switchFrame('nav-reporting')"><i class="fa fa-bar-chart"></i> <span class="nav-label">Reporting</span></a>
+                </li>
+                <li class="nav-devicemgmt">
+                    <a onclick="switchFrame('nav-devicemgmt')"><i class="fa fa-tachometer"></i> <span class="nav-label">Device Management</span> </a>
+                </li> 
+                <li class="nav-alertrules">
+                    <a onclick="switchFrame('nav-alertrules')"><i class="fa fa-bell"></i> <span class="nav-label">Alert Rules</span> </a>
+                </li>
+                <li>
+                    <a href="http://indiadevmisc.cloudapp.net:8080/sign-out"> <i class="fa fa-sign-out"></i> <span class="nav-lable">Log out</span> </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row-fluid wrapper wrapper-content animated fadeInRight">
+            <iframe id="mainview" style="width:100%" frameBorder="0" />
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                <strong>Copyright</strong> Example Company &copy; 2014-2015
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>
